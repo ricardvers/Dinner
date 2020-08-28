@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONStringer
 import kotlin.random.Random
 import kotlin.system.exitProcess
 
@@ -19,11 +20,18 @@ import kotlin.system.exitProcess
 class MainActivity : AppCompatActivity() {
 
     public var foodList = arrayListOf("Chinese", "McDonald's", "Pizza", "Sushi")
+    public var defaultList = foodList.joinToString(",")
+    private val PREF_NAME = "maisto-listas"
+    private val PREF_KEY = "maistas"
+    private val PRIVATE_MODE = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val sharedPref: SharedPreferences = getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+        foodList = ArrayList(sharedPref.getString(PREF_KEY, defaultList)?.split(","))
         setContentView(R.layout.activity_main)
+
 
         btn_search.setOnClickListener {
             onSearchClick()
@@ -38,13 +46,19 @@ class MainActivity : AppCompatActivity() {
 
         }
             btn_add.setOnClickListener {
-
                 if (et_add.text.toString().isNotBlank()) {
                     val newFood = et_add.text.toString()
                     foodList.add(newFood)
+
+                    with (sharedPref.edit()) {
+                        putString(PREF_KEY, foodList.joinToString(","))
+                        commit()
+                    }
+
                     Toast.makeText(this, "$newFood was added to your list!", Toast.LENGTH_SHORT)
                         .show()
                     et_add.text.clear()
+
 
 
                 } else Toast.makeText(this, "Please write something first", Toast.LENGTH_SHORT)

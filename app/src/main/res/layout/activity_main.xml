@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="#FFFFFF"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    app:navGraph="@navigation/nav_graph">
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="409dp"
+        android:layout_height="38dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="461dp" />
 
     <TextView
         android:id="@+id/TextView"
