@@ -18,7 +18,6 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val myList =
@@ -51,6 +50,6 @@ class ListActivity : AppCompatActivity() {
                 exitProcess(0)
             }
         }
-        exitProcess(0)
+        return (false)
     }
 }

@@ -93,8 +93,4 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Ooops, something went wrong...", Toast.LENGTH_SHORT).show()
             }
         }
-        override fun onPause() {
-        super.onPause()  // Always call the superclass method first
-
-    }
 }
