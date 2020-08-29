@@ -8,16 +8,6 @@
     tools:context=".MainActivity"
     app:navGraph="@navigation/nav_graph">
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="409dp"
-        android:layout_height="38dp"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="461dp" />
-
     <TextView
         android:id="@+id/TextView"
         android:layout_width="0dp"
