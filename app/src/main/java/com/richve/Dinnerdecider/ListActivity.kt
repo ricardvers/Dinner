@@ -26,7 +26,7 @@ class ListActivity : AppCompatActivity() {
 
         arrayAdapter = ArrayAdapter(
             this,
-            android.R.layout.simple_list_item_1, myList
+            android.R.layout.simple_list_item_multiple_choice, myList
         )
         myListView?.adapter = arrayAdapter
 
