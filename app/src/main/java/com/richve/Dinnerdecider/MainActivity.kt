@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.system.Os.remove
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -33,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
         btn_search.setOnClickListener {
             onSearchClick()
         }
@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             val food = foodList[randomFood]
             TextView.text =  foodList[randomFood].toString()
             btn_search.visibility = View.VISIBLE
+
 
         }
             btn_add.setOnClickListener {
