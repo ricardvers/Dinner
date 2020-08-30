@@ -1,14 +1,16 @@
 package com.richve.Dinnerdecider
 
+import android.R
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.CheckedTextView
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.system.exitProcess
+
 
 class ListActivity : AppCompatActivity() {
 
@@ -30,7 +32,16 @@ class ListActivity : AppCompatActivity() {
         )
         myListView?.adapter = arrayAdapter
 
+        myListView.setOnItemClickListener{ adapterView, view, i, l ->
 
+            val chkBox = findViewById<View>() as CheckedTextView
+            chkBox.setOnClickListener { v -> (v as CheckedTextView).toggle() }
+            android.widget.Toast.makeText(
+                this,
+                "You Selected the item --> " + myList.get(i),
+                android.widget.Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
