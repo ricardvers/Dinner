@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private val PREF_KEY = "maistas"
     private val PRIVATE_MODE = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
