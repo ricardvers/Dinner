@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.preference.PreferenceManager
 import java.security.Key
 
-public var foodList = arrayListOf<String>("Sushi", "mcdonalds", "pizza", "Chinese","Sushi", "mcdonalds", "pizza", "Chinese","Sushi", "mcdonalds", "pizza", "Chinese")
-public var defaultList = foodList.joinToString(",")
+var foodList = arrayListOf("Chinese", "McDonald's", "Pizza", "Sushi", "Burgers", "Salad", "Portuguese", "Fish")
+var defaultList = foodList.joinToString(",")
 fun setDefaults(key: String?, value: String?, context: Context?) {
     val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
     val editor = preferences.edit()
@@ -16,7 +16,7 @@ fun setDefaults(key: String?, value: String?, context: Context?) {
         editor.remove(key)
     } else
         editor.putString(key, value)
-    editor.commit()
+    editor.apply()
 }
 
 fun getDefaults(key: String?, context: Context?): String? {

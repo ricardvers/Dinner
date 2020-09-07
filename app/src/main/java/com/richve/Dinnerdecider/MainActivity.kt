@@ -1,6 +1,7 @@
 package com.richve.Dinnerdecider
 
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
@@ -18,16 +19,17 @@ import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
-    var foodList = arrayListOf("Chinese", "McDonald's", "Pizza", "Sushi")
+    var foodList = arrayListOf("Chinese", "McDonald's", "Pizza", "Sushi", "Burgers", "Salad", "Portuguese", "Fish")
     var defaultList = foodList.joinToString(",")
     val PREF_NAME = "maisto-listas"
     val PREF_KEY = "maistas"
+    var rolledFood = ""
     private val PRIVATE_MODE = 0
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         foodList = ArrayList(getDefaults(PREF_KEY, this)?.split(","))
         setContentView(R.layout.activity_main)
@@ -35,20 +37,19 @@ class MainActivity : AppCompatActivity() {
 
         btn_search.setOnClickListener {
             onSearchClick()
-            true
         }
 
         btn_decide.setOnClickListener {
             val random = Random
             var randomFood = random.nextInt(foodList.count())
-            val food = foodList[randomFood]
-            tv_result.text =  foodList[randomFood].toString()
+            tv_result.text =  foodList[randomFood]
             btn_search.visibility = View.VISIBLE
-            btn_search?.setText("find ${tv_result.text} restaurants")
-
-
+            btn_search?.text = "Find ${tv_result.text} restaurants"
+            rolledFood = tv_result.text.toString()
+            tv_result.text = "You rolled ${tv_result.text}"
         }
-            btn_add.setOnClickListener {
+
+        btn_add.setOnClickListener {
 
                 if (et_add.text.toString().isNotBlank()) {
                     val newFood = et_add.text.toString()
@@ -61,16 +62,7 @@ class MainActivity : AppCompatActivity() {
                 } else Toast.makeText(this, "Please write something first", Toast.LENGTH_SHORT)
                     .show()
             }
-
-            btn_list.setOnClickListener {
-                    val intent = Intent(applicationContext, ListActivity::class.java).apply {
-                    //putExtra("Listas", foodList);
-                    startActivity(this)
-                }
-
-            }
         }
-
 
         override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
@@ -81,22 +73,27 @@ class MainActivity : AppCompatActivity() {
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
             when (item.itemId) {
-
-                R.id.nav_about -> Toast.makeText(this, "About", Toast.LENGTH_SHORT).show()
-                R.id.nav_quit -> {
-                    this@MainActivity.finish()
-                    exitProcess(0)
+                R.id.nav_list -> {
+                    val intentListActivity = Intent(applicationContext, ListActivity::class.java).apply {
+                    }
+                        startActivity(intentListActivity)
+                    }
+                R.id.nav_info -> {
+                    val intentInfoActivity = Intent(applicationContext, InfoActivity::class.java).apply {
+                    }
+                    startActivity(intentInfoActivity)
+                }
+                R.id.nav_exit -> {
+                    finishAffinity()
                 }
             }
-
             return super.onOptionsItemSelected(item)
         }
 
          private fun onSearchClick() {
             try {
-                val term: String = tv_result.text.toString()
                 val gmmIntentUri =
-                    Uri.parse("geo:0,0?q=" + Uri.encode(term + " restaurant"))
+                    Uri.parse("geo:0,0?q=" + Uri.encode(rolledFood + " restaurant"))
                 val searchIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 searchIntent.setPackage("com.google.android.apps.maps")
                 startActivity(searchIntent)
