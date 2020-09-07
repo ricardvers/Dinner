@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         foodList = ArrayList(getDefaults(PREF_KEY, this)?.split(","))
         setContentView(R.layout.activity_main)
 
+        getSupportActionBar()?.setDisplayShowTitleEnabled(false)
+        getSupportActionBar()?.setDisplayUseLogoEnabled(true)
+
 
         btn_search.setOnClickListener {
             onSearchClick()

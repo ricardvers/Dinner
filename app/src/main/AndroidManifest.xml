@@ -7,7 +7,7 @@
         android:fullBackupContent="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/logo"
-        android:label=""
+        android:label="Dinner Decider"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
