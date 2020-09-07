@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="About"
+        android:id="@+id/nav_about"> </item>
+    <item android:title="Quit"
+        android:id="@+id/nav_quit"> </item>
+    <item
+        android:id="@+id/action_one"
+        android:icon="@drawable/ic_baseline_delete_24"
+        app:showAsAction="always"
+        android:title="Item One"/>
+</menu>
