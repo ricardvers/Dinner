@@ -1,32 +1,33 @@
 package com.richve.Dinnerdecider
 
 import android.content.Intent
-import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.PreferenceManager
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.richve.Dinnerdecider.ui.getDefaults
 import com.richve.Dinnerdecider.ui.setDefaults
-import kotlinx.android.synthetic.main.activity_list.*
-import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.system.exitProcess
 
 
 class ListActivity : AppCompatActivity() {
 
     var selected = arrayListOf<Int>()
+    lateinit var mAdView2 : AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        //val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        MobileAds.initialize(this) {}
+        mAdView2 = findViewById(R.id.adView1)
+        val adRequest = AdRequest.Builder().build()
+        mAdView2.loadAd(adRequest)
+
         var myList = ArrayList(getDefaults("maistas", this)?.split(","))
         val arrayAdapter: ArrayAdapter<*>
         var myListView = findViewById<ListView>(R.id.listView)

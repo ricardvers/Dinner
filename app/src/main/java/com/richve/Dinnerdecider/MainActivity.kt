@@ -1,38 +1,47 @@
 package com.richve.Dinnerdecider
 
 import android.content.Intent
-import android.graphics.Paint
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.richve.Dinnerdecider.ui.getDefaults
 import com.richve.Dinnerdecider.ui.setDefaults
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
-import kotlin.system.exitProcess
+import com.google.android.gms.ads.MobileAds
 
 
 
 class MainActivity : AppCompatActivity() {
-
     var foodList = arrayListOf("Chinese", "McDonald's", "Pizza", "Sushi", "Burgers", "Salad", "Portuguese", "Fish")
     var defaultList = foodList.joinToString(",")
     val PREF_NAME = "maisto-listas"
     val PREF_KEY = "maistas"
     var rolledFood = ""
+    var isInList = false
     private val PRIVATE_MODE = 0
+    lateinit var mAdView3 : AdView
 
-
-
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         foodList = ArrayList(getDefaults(PREF_KEY, this)?.split(","))
+
         setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this) {}
+        mAdView3 = findViewById(R.id.adView3)
+        val adRequest2 = AdRequest.Builder().build()
+        mAdView3.loadAd(adRequest2)
 
         getSupportActionBar()?.setDisplayShowTitleEnabled(false)
         getSupportActionBar()?.setDisplayUseLogoEnabled(true)
@@ -55,13 +64,25 @@ class MainActivity : AppCompatActivity() {
         btn_add.setOnClickListener {
 
                 if (et_add.text.toString().isNotBlank()) {
-                    val newFood = et_add.text.toString()
-                    foodList.add(newFood)
-                    setDefaults(PREF_KEY, foodList.joinToString(","), this)
-                    Toast.makeText(this, "$newFood was added to your list!", Toast.LENGTH_SHORT)
-                        .show()
-                    et_add.text.clear()
 
+                    for (word in foodList) {
+                        if (et_add.text.toString().equals(word, true)) {
+                            isInList = true
+                        break  }
+                        else isInList = false
+                    }
+                    if (isInList == true){
+                            Toast.makeText(this, "This item is already in your list!", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    else {
+                            val newFood = et_add.text.toString()
+                            foodList.add(newFood)
+                            setDefaults(PREF_KEY, foodList.joinToString(","), this)
+                            Toast.makeText(this, "$newFood was added to your list!", Toast.LENGTH_SHORT)
+                                .show()
+                            et_add.text.clear()
+                        }
                 } else Toast.makeText(this, "Please write something first", Toast.LENGTH_SHORT)
                     .show()
             }

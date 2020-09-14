@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="serif"
         android:text="@string/Intro"
         android:textAlignment="center"
@@ -25,19 +25,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/my_border"
         android:fontFamily="serif"
         android:text="@string/add"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_decide"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,6 +61,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="1dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-7815002402226898/2089023473"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+
     <Button
         android:id="@+id/btn_decide"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -68,15 +83,15 @@
         android:layout_height="80dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/my_border"
         android:fontFamily="serif"
         android:text="@string/decide"
         android:textColor="#000000"
         android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -85,7 +100,7 @@
         android:layout_height="64dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="96dp"
         android:background="@drawable/my_border"
         android:fontFamily="serif"
         android:padding="8dp"
@@ -94,7 +109,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/et_add"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent" />
 
 

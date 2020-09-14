@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.richve.Dinnerdecider">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -11,7 +12,11 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:versionCode = "1"
+        android:versionName = "DD"
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait"
+        >
         <activity
             android:name=".InfoActivity"
             android:label="About"
@@ -29,6 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-7815002402226898~3655603629"/>
     </application>
 
 </manifest>
