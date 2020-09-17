@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     for (word in foodList) {
                         if (et_add.text.toString().equals(word, true)) {
                             isInList = true
-                        break  }
+                            break  }
                         else isInList = false
                     }
                     if (isInList == true){

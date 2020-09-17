@@ -12,8 +12,8 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:versionCode = "1"
-        android:versionName = "DD"
+        android:versionCode = "2"
+        android:versionName = "Second"
         android:theme="@style/AppTheme"
         android:screenOrientation="portrait"
         >
