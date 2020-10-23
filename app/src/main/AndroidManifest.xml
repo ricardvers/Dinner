@@ -14,17 +14,15 @@
         android:supportsRtl="true"
         android:versionCode = "2"
         android:versionName = "Second"
-        android:theme="@style/AppTheme"
+        android:theme="@style/AppTheme.ActionBar.Transparent"
         android:screenOrientation="portrait"
         >
         <activity
             android:name=".InfoActivity"
-            android:label="About"
-            android:theme="@style/AppTheme"> </activity>
+            android:label=""> </activity>
         <activity
             android:name=".ListActivity"
-            android:label="Your Dish List"
-            android:theme="@style/AppTheme"> </activity>
+            android:label=""> </activity>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop">
@@ -37,6 +35,9 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-7815002402226898~3655603629"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

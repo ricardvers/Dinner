@@ -13,7 +13,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="Instructions">
-        \u2022To use this app, click on \"DECIDE!\" button, and the app will pick a random dish from your list.\n\n\u2022After the app picks a dish, you can find the nearby restaurants by clicking on the \"Find restaurant\" button.\n\n\u2022You can add new dishes to your list by writing the dish name to the \"Click here to add a dish to your list\" and pressing \"Add\".\n\n\u2022You can find your list by clicking on the list icon at the top right corner.\n\n\u2022You can remove unwanted dishes from your list by clicking on the list item.
+        \n\n\u2022To use this app, click on \"DECIDE!\" button, and the app will pick a random dish from your list.\n\n\u2022After the app picks a dish, you can find the nearby restaurants by clicking on the \"Find restaurant\" button.\n\n\u2022You can add new dishes to your list by writing the dish name to the \"Click here to add a dish to your list\" and pressing \"Add\".\n\n\u2022You can find your list by clicking on the list icon at the top right corner.\n\n\u2022You can remove unwanted dishes from your list by clicking on the list item.
     </string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
