@@ -4,19 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.*
+import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.richve.Dinnerdecider.ui.foodList
 import com.richve.Dinnerdecider.ui.getDefaults
 import com.richve.Dinnerdecider.ui.setDefaults
-import kotlin.collections.ArrayList
+import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class ListActivity : AppCompatActivity() {
 
-    var selected = arrayListOf<Int>()
+
     lateinit var mAdView2 : AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,22 +32,20 @@ class ListActivity : AppCompatActivity() {
         mAdView2.loadAd(adRequest)
 
         var myList = ArrayList(getDefaults("maistas", this)?.split(","))
-        val arrayAdapter: ArrayAdapter<*>
-        var myListView = findViewById<ListView>(R.id.listView)
+        val myListView = findViewById<ListView>(R.id.listView)
 
+        val myListAdapter = MyListAdapter(this, myList)
+        myListView.adapter = myListAdapter
 
-        arrayAdapter = ArrayAdapter(
-            this, R.layout.list_item, myList
-        )
-
-        myListView?.adapter = arrayAdapter
-        myListView?.setOnItemClickListener { _, _, i, _ ->
+        btn_delete.setOnClickListener{
+            for (i in selected.sortedDescending()){
 
                 myList.removeAt(i)
-                setDefaults("maistas", myList.joinToString(","), this)
-                arrayAdapter.notifyDataSetChanged()
             }
-
+            setDefaults("maistas", myList.joinToString(","), this)
+            myListAdapter.notifyDataSetChanged()
+            selected.clear()
+        }
     }
 
     override fun onCreateOptionsMenu(list_menu: Menu?): Boolean {
@@ -55,13 +56,15 @@ class ListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_home -> {
-                val intentMainActivity = Intent(applicationContext, MainActivity::class.java).apply {
-                }
+                val intentMainActivity =
+                    Intent(applicationContext, MainActivity::class.java).apply {
+                    }
                 startActivity(intentMainActivity)
             }
-            R.id.nav_info-> {
-                val intentInfoActivity = Intent(applicationContext, InfoActivity::class.java).apply {
-                }
+            R.id.nav_info -> {
+                val intentInfoActivity =
+                    Intent(applicationContext, InfoActivity::class.java).apply {
+                    }
                 startActivity(intentInfoActivity)
             }
             R.id.nav_exit -> {

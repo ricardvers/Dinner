@@ -2,11 +2,18 @@ package com.richve.Dinnerdecider.ui
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.widget.Toast
 import androidx.preference.PreferenceManager
-import java.security.Key
 
-var foodList = arrayListOf("Chinese", "McDonald's", "Pizza", "Sushi", "Burgers", "Salad", "Portuguese", "Fish")
+var foodList = arrayListOf(
+    "Chinese",
+    "McDonald's",
+    "Pizza",
+    "Sushi",
+    "Burgers",
+    "Salad",
+    "Portuguese",
+    "Fish"
+)
 var defaultList = foodList.joinToString(",")
 fun setDefaults(key: String?, value: String?, context: Context?) {
     val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -19,9 +26,10 @@ fun setDefaults(key: String?, value: String?, context: Context?) {
     editor.apply()
 }
 
-fun getDefaults(key: String?, context: Context?): String? {
-    val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-    return preferences.getString(key, defaultList)
-}
+    fun getDefaults(key: String?, context: Context?): String? {
+        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        return preferences.getString(key, defaultList)
+    }
+
 
 

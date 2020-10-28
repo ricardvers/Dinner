@@ -3,6 +3,7 @@
     package="com.richve.Dinnerdecider">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -11,30 +12,35 @@
         android:label="Dinner Decider"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:versionCode = "2"
-        android:versionName = "Second"
-        android:theme="@style/AppTheme.ActionBar.Transparent"
         android:screenOrientation="portrait"
-        >
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.ActionBar.Transparent"
+        android:versionCode="3"
+        android:versionName="Second">
+
+
         <activity
             android:name=".InfoActivity"
-            android:label=""> </activity>
+            android:label="" />
         <activity
             android:name=".ListActivity"
-            android:label=""> </activity>
+            android:label="" />
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"/>
+
+        <activity
+            android:name=".FragmentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7815002402226898~3655603629"/>
+            android:value="ca-app-pub-7815002402226898~3655603629" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
