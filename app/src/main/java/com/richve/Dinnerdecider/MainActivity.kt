@@ -7,24 +7,21 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.richve.Dinnerdecider.ui.getDefaults
-import com.richve.Dinnerdecider.ui.setDefaults
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
 var isInList = false
 const val PREF_KEY = "maistas"
-const val PREF_KEY2 = "FirstTime"
 class MainActivity : AppCompatActivity() {
     var foodList = arrayListOf<String>()
     var rolledFood = ""
-    lateinit var mAdView3 : AdView
+    lateinit var mAdView3: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         btn_decide.setOnClickListener {
             val random = Random
             val randomFood = random.nextInt(foodList.count())
-            tv_result.text =  foodList[randomFood]
+            tv_result.text = foodList[randomFood]
             btn_search.visibility = View.VISIBLE
             btn_searchRecipe.visibility = View.VISIBLE
             btn_search?.text = "Find restaurants"
@@ -58,80 +55,51 @@ class MainActivity : AppCompatActivity() {
             tv_result.text = "You rolled ${tv_result.text}"
             btn_decide.text = "Decide again"
         }
+    }
 
-        btn_add.setOnClickListener {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
-                if (et_add.text.toString().isNotBlank()) {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
 
-                    for (word in foodList) {
-                        if (et_add.text.toString().equals(word, true)) {
-                            isInList = true
-                            break  }
-                        else isInList = false
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.nav_list -> {
+                val intentListActivity =
+                    Intent(applicationContext, ListActivity::class.java).apply {
                     }
-                    if (isInList == true){
-                            Toast.makeText(
-                                this,
-                                "This item is already in your list!",
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
-                        }
-                    else {
-                            val newFood = et_add.text.toString()
-                            foodList.add(newFood)
-                            setDefaults(PREF_KEY, foodList.joinToString(","), this)
-                            Toast.makeText(
-                                this,
-                                "$newFood was added to your list!",
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
-                            et_add.text.clear()
-                        }
-                } else Toast.makeText(this, "Please write something first", Toast.LENGTH_SHORT)
-                    .show()
+
+                startActivity(intentListActivity)
+            }
+            R.id.nav_exit -> {
+                finishAffinity()
             }
         }
+        return super.onOptionsItemSelected(item)
+    }
 
-        override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
-            menuInflater.inflate(R.menu.menu, menu)
-            return true
+    private fun onSearchClick() {
+        try {
+            val gmmIntentUri =
+                Uri.parse("geo:0,0?q=" + Uri.encode(rolledFood + " restaurant"))
+            val searchIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            searchIntent.setPackage("com.google.android.apps.maps")
+            startActivity(searchIntent)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Ooops, something went wrong...", Toast.LENGTH_SHORT).show()
         }
+    }
 
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-            when (item.itemId) {
-                R.id.nav_list -> {
-                    val intentListActivity =
-                        Intent(applicationContext, ListActivity::class.java).apply {
-                        }
-                    startActivity(intentListActivity)
-                }
-                R.id.nav_exit -> {
-                    finishAffinity()
-                }
-            }
-            return super.onOptionsItemSelected(item)
-        }
-
-         private fun onSearchClick() {
-            try {
-                val gmmIntentUri =
-                    Uri.parse("geo:0,0?q=" + Uri.encode(rolledFood + " restaurant"))
-                val searchIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                searchIntent.setPackage("com.google.android.apps.maps")
-                startActivity(searchIntent)
-            } catch (e: Exception) {
-                Toast.makeText(this, "Ooops, something went wrong...", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        private fun onSearchRecipeClick() {
+    private fun onSearchRecipeClick() {
+        try {
             val intent = Intent(Intent.ACTION_WEB_SEARCH)
             val term = rolledFood + " recipes"
             intent.putExtra(SearchManager.QUERY, term)
             startActivity(intent)
-            }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Ooops, something went wrong...", Toast.LENGTH_SHORT).show()
+        }
+    }
 }
