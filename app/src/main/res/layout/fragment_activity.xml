@@ -3,32 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/relativeLayout"
+    android:background="@drawable/background"
     tools:context=".FragmentActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/divider"/>
+        android:layout_above="@+id/divider" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/black"
-        android:layout_above="@+id/button_layout"/>
+        android:layout_above="@+id/button_layout" />
 
     <RelativeLayout
         android:id="@+id/button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-        <Button
-            android:id="@+id/btn_skip"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:contentDescription="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SKIP"
-            android:background="@null"/>
+            android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+            android:visibility="invisible" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,35 +44,57 @@
                 android:id="@+id/indicator1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
+                android:text="@string/dash"
                 android:textColor="@android:color/black"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textSize="48sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/indicator2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
+                android:text="@string/dash"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textSize="48sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/indicator3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
+                android:text="@string/dash"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
+                android:textSize="48sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/indicator4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dash"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="48sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/indicator5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dash"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="48sp"
+                android:textStyle="bold" />
         </LinearLayout>
-        <Button
+
+        <ImageView
             android:id="@+id/btn_next"
+            android:contentDescription="@string/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:text="NEXT"
-            android:background="@null"
-            android:layout_alignParentRight="true" />
+            android:layout_marginTop="0dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
     </RelativeLayout>
 
 </RelativeLayout>

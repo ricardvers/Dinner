@@ -8,11 +8,6 @@
         app:showAsAction="ifRoom"
         android:title="@string/home"/>
     <item
-        android:id="@+id/nav_info"
-        android:icon="@drawable/ic_baseline_info_24"
-        app:showAsAction="ifRoom"
-        android:title="@string/info"/>
-    <item
         android:id="@+id/nav_exit"
         android:icon="@drawable/ic_baseline_exit_to_app_24"
         app:showAsAction="ifRoom"

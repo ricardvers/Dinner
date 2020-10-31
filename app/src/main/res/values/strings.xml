@@ -9,9 +9,11 @@
     <string name="title_activity_list">ListActivity</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="Instructions">
-        \n\n\u2022To use this app, click on \"DECIDE!\" button, and the app will pick a random dish from your list.\n\n\u2022After the app picks a dish, you can find the nearby restaurants by clicking on the \"Find restaurant\" button.\n\n\u2022You can add new dishes to your list by writing the dish name to the \"Click here to add a dish to your list\" and pressing \"Add\".\n\n\u2022You can find your list by clicking on the list icon at the top right corner.\n\n\u2022You can remove unwanted dishes from your list by clicking on the list item.
-    </string>
+    <string name="Intro1">"Welcome to the \"Dinner?\" app!"</string>
+    <string name="Intro2">"This app decides your meal for you and helps to find the best recipes and nearest restaurants."</string>
+    <string name="Intro3">To use this app, simply click on the \"DECIDE!\" button, and the app will pick a random dish from your list.</string>
+    <string name="Intro4">You can find your dish list by clicking on the list icon at the top right corner.</string>
+    <string name="Intro5">Bon Appétit!</string>
     <string name="list">List</string>
     <string name="info">Info</string>
     <string name="exit">Exit</string>
@@ -21,4 +23,8 @@
     <string name="Delete">Delete</string>
     <string name="SearchRecipe">Find\n Recipes</string>
     <string name="title_activity_fragment">FragmentActivity</string>
+    <string name="dash">-</string>
+    <string name="back">BACK</string>
+    <string name="nextSlider">NEXT</string>
+    <string name="done">DONE</string>
 </resources>

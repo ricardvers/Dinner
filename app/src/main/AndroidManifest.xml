@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:hardwareAccelerated="false"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/logonew"
         android:label="Dinner Decider"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -18,19 +18,17 @@
         android:versionCode="3"
         android:versionName="Second">
 
-
-        <activity
-            android:name=".InfoActivity"
-            android:label="" />
         <activity
             android:name=".ListActivity"
             android:label="" />
         <activity
             android:name=".MainActivity"
+            android:label=""
             android:launchMode="singleTop"/>
 
         <activity
-            android:name=".FragmentActivity">
+            android:name=".FragmentActivity"
+            android:label="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

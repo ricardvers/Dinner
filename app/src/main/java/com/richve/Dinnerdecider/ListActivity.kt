@@ -31,7 +31,7 @@ class ListActivity : AppCompatActivity() {
         val adRequest = AdRequest.Builder().build()
         mAdView2.loadAd(adRequest)
 
-        var myList = ArrayList(getDefaults("maistas", this)?.split(","))
+        val myList = ArrayList(getDefaults("maistas", this)?.split(","))
         val myListView = findViewById<ListView>(R.id.listView)
 
         val myListAdapter = MyListAdapter(this, myList)
@@ -60,12 +60,6 @@ class ListActivity : AppCompatActivity() {
                     Intent(applicationContext, MainActivity::class.java).apply {
                     }
                 startActivity(intentMainActivity)
-            }
-            R.id.nav_info -> {
-                val intentInfoActivity =
-                    Intent(applicationContext, InfoActivity::class.java).apply {
-                    }
-                startActivity(intentInfoActivity)
             }
             R.id.nav_exit -> {
                 finishAffinity()

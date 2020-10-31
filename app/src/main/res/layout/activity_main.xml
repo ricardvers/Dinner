@@ -4,37 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logo4"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <TextView
+        style="@style/MainFont"
         android:id="@+id/tv_result"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:fontFamily="@font/roboto"
         android:text="@string/Intro"
-        android:textAlignment="center"
-        android:textColor="@color/textColor"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_searchRecipe"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
+        app:layout_constraintVertical_bias="0.752" />
 
     <Button
+        style="@style/MainFont"
         android:id="@+id/btn_add"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/my_border"
-        android:fontFamily="serif"
         android:text="@string/add"
-        android:textAlignment="center"
-        android:textColor="@color/textColor"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_decide"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,19 +39,17 @@
 
     <EditText
         android:id="@+id/et_add"
+        style="@style/MainFont"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
-        android:autofillHints="Dish"
+        android:alpha="0.6"
         android:background="@android:color/transparent"
         android:ems="10"
-        android:fontFamily="@font/roboto"
         android:hint="@string/AddHint"
         android:inputType="textPersonName"
-        android:maxLength="20"
-        android:textAlignment="center"
-        android:textColor="@color/textColor"
-        android:textColorHint="#BFFFFFFF"
+        android:maxLength="18"
+        android:textColorHint="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_add"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,20 +69,18 @@
         app:adUnitId="ca-app-pub-7815002402226898/2089023473"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+        app:layout_constraintStart_toStartOf="parent"> </com.google.android.gms.ads.AdView>
 
     <Button
+        style="@style/MainFont"
         android:id="@+id/btn_decide"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="2dp"
         android:background="@drawable/my_border"
-        android:fontFamily="@font/roboto"
         android:text="@string/decide"
-        android:textColor="@color/textColor"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/adView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +88,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        style="@style/MainFont"
         android:id="@+id/btn_search"
         android:layout_width="160dp"
         android:layout_height="64dp"
@@ -103,10 +96,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/my_border"
-        android:fontFamily="serif"
         android:padding="8dp"
-        android:textAlignment="center"
-        android:textColor="@color/textColor"
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/et_add"
@@ -117,21 +107,18 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
+        style="@style/MainFont"
         android:id="@+id/btn_searchRecipe"
         android:layout_width="160dp"
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/my_border"
-        android:fontFamily="serif"
         android:padding="8dp"
         android:text="@string/SearchRecipe"
-        android:textAlignment="center"
-        android:textColor="@color/textColor"
         android:textSize="18sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/et_add"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

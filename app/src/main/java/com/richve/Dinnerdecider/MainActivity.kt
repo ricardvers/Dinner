@@ -1,28 +1,26 @@
 package com.richve.Dinnerdecider
 
-import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.richve.Dinnerdecider.ui.getDefaults
 import com.richve.Dinnerdecider.ui.setDefaults
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
-import com.google.android.gms.ads.MobileAds
 
-public var isInList = false
-public const val PREF_KEY = "maistas"
-public const val PREF_KEY2 = "FirstTime"
+var isInList = false
+const val PREF_KEY = "maistas"
+const val PREF_KEY2 = "FirstTime"
 class MainActivity : AppCompatActivity() {
     var foodList = arrayListOf<String>()
     var rolledFood = ""
@@ -51,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_decide.setOnClickListener {
             val random = Random
-            var randomFood = random.nextInt(foodList.count())
+            val randomFood = random.nextInt(foodList.count())
             tv_result.text =  foodList[randomFood]
             btn_search.visibility = View.VISIBLE
             btn_searchRecipe.visibility = View.VISIBLE
@@ -72,14 +70,22 @@ class MainActivity : AppCompatActivity() {
                         else isInList = false
                     }
                     if (isInList == true){
-                            Toast.makeText(this, "This item is already in your list!", Toast.LENGTH_SHORT)
+                            Toast.makeText(
+                                this,
+                                "This item is already in your list!",
+                                Toast.LENGTH_SHORT
+                            )
                                 .show()
                         }
                     else {
                             val newFood = et_add.text.toString()
                             foodList.add(newFood)
                             setDefaults(PREF_KEY, foodList.joinToString(","), this)
-                            Toast.makeText(this, "$newFood was added to your list!", Toast.LENGTH_SHORT)
+                            Toast.makeText(
+                                this,
+                                "$newFood was added to your list!",
+                                Toast.LENGTH_SHORT
+                            )
                                 .show()
                             et_add.text.clear()
                         }
@@ -98,14 +104,10 @@ class MainActivity : AppCompatActivity() {
 
             when (item.itemId) {
                 R.id.nav_list -> {
-                    val intentListActivity = Intent(applicationContext, ListActivity::class.java).apply {
-                    }
-                        startActivity(intentListActivity)
-                    }
-                R.id.nav_info -> {
-                    val intentInfoActivity = Intent(applicationContext, InfoActivity::class.java).apply {
-                    }
-                    startActivity(intentInfoActivity)
+                    val intentListActivity =
+                        Intent(applicationContext, ListActivity::class.java).apply {
+                        }
+                    startActivity(intentListActivity)
                 }
                 R.id.nav_exit -> {
                     finishAffinity()
