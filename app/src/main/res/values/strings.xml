@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DinnerDecider</string>
+    <string name="app_name">Dinner?</string>
     <string name="title_activity_bottom_">MainActivity</string>
     <string name="title_About">About</string>
     <string name="title_dashboard">Dashboard</string>

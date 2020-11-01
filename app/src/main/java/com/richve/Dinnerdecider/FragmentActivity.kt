@@ -34,10 +34,10 @@ class FragmentActivity : AppCompatActivity() {
         activity = this
         preference = getSharedPreferences("IntroSlider", Context.MODE_PRIVATE)
 
-        if(!preference.getBoolean(introPreference,true)){
-            startActivity(Intent(activity,MainActivity::class.java))
-            finish()
-        }
+//                if(!preference.getBoolean(introPreference,true)){
+//            startActivity(Intent(activity,MainActivity::class.java))
+//            finish()
+//        }
 
         fragment1.setTitle(getString(R.string.Intro1))
         fragment2.setTitle(getString(R.string.Intro2))
