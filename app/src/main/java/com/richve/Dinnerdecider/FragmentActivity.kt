@@ -24,8 +24,8 @@ class FragmentActivity : AppCompatActivity() {
     private val fragment4 = SliderFragment()
     private val fragment5 = SliderFragment()
 
-    lateinit var activity : Activity
-    lateinit var preference : SharedPreferences
+    lateinit var activity: Activity
+    lateinit var preference: SharedPreferences
     private val introPreference = "Intro"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +34,10 @@ class FragmentActivity : AppCompatActivity() {
         activity = this
         preference = getSharedPreferences("IntroSlider", Context.MODE_PRIVATE)
 
-//                if(!preference.getBoolean(introPreference,true)){
-//            startActivity(Intent(activity,MainActivity::class.java))
-//            finish()
-//        }
+        if (!preference.getBoolean(introPreference, true)) {
+            startActivity(Intent(activity, MainActivity::class.java))
+            finish()
+        }
 
         fragment1.setTitle(getString(R.string.Intro1))
         fragment2.setTitle(getString(R.string.Intro2))
@@ -54,8 +54,8 @@ class FragmentActivity : AppCompatActivity() {
 
         view_pager.adapter = adapter
 
-        btn_next.setOnClickListener {view_pager.currentItem++}
-        btn_back.setOnClickListener {view_pager.currentItem--}
+        btn_next.setOnClickListener { view_pager.currentItem++ }
+        btn_back.setOnClickListener { view_pager.currentItem-- }
 
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
@@ -135,7 +135,7 @@ class FragmentActivity : AppCompatActivity() {
 
     }
 
-    fun goToDashboard(){
+    fun goToDashboard() {
         startActivity(Intent(activity, ListActivity::class.java))
         finish()
         val editor = preference.edit()
@@ -146,9 +146,9 @@ class FragmentActivity : AppCompatActivity() {
     class MyPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(
         manager,
         BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
-    ){
+    ) {
 
-        val list : MutableList<Fragment> = ArrayList()
+        val list: MutableList<Fragment> = ArrayList()
 
         override fun getItem(position: Int): Fragment {
             return list[position]

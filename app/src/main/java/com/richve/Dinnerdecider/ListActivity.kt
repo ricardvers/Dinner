@@ -35,82 +35,79 @@ class ListActivity : AppCompatActivity() {
         val myListAdapter = MyListAdapter(this, myList)
         myListView.adapter = myListAdapter
 
-        et_add2.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) et_add2.hint = "" else et_add2.hint = getString(R.string.AddHint)
-        }
-
         btn_delete.setOnClickListener {
-                if (selected.isEmpty()) {
-                    Toast.makeText(this, "No items are selected", Toast.LENGTH_SHORT).show()
-                } else {
-                    for (i in selected.sortedDescending()) {
-                        myList.removeAt(i)
-                    }
-                    setDefaults(PREF_KEY, myList.joinToString(","), this)
-                    myListAdapter.notifyDataSetChanged()
-                    selected.clear()
-                    Toast.makeText(this, "Selected items successfully deleted!", Toast.LENGTH_SHORT).show()
+            if (selected.isEmpty()) {
+                Toast.makeText(this, "No items are selected", Toast.LENGTH_SHORT).show()
+            } else {
+                for (i in selected.sortedDescending()) {
+                    myList.removeAt(i)
                 }
-                hideKeyboard()
-            }
-
-            btn_add2.setOnClickListener {
-                hideKeyboard()
-                if (et_add2.text.toString().isNotBlank()) {
-
-                    for (word in myList) {
-                        if (et_add2.text.toString().equals(word, true)) {
-                            isInList = true
-                            break
-                        } else isInList = false
-                    }
-                    if (isInList) {
-                        Toast.makeText(
-                            this,
-                            "This item is already in your list!",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-                    } else {
-
-                        val newFood = et_add2.text.toString()
-                        myList.add(newFood)
-                        setDefaults(PREF_KEY, myList.joinToString(","), this)
-                        myListAdapter.notifyDataSetChanged()
-                        Toast.makeText(
-                            this,
-                            "$newFood was added to your list!",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-                        et_add2.text.clear()
-
-                    }
-                } else Toast.makeText(this, "Please write something first", Toast.LENGTH_SHORT)
+                setDefaults(PREF_KEY, myList.joinToString(","), this)
+                myListAdapter.notifyDataSetChanged()
+                selected.clear()
+                Toast.makeText(this, "Selected items successfully deleted!", Toast.LENGTH_SHORT)
                     .show()
             }
+            hideKeyboard()
         }
 
+        btn_add2.setOnClickListener {
+            hideKeyboard()
+            if (et_add2.text.toString().isNotBlank()) {
 
-        override fun onCreateOptionsMenu(list_menu: Menu?): Boolean {
-            menuInflater.inflate(R.menu.list_menu, list_menu)
-            return true
+                for (word in myList) {
+                    if (et_add2.text.toString().equals(word, true)) {
+                        isInList = true
+                        break
+                    } else isInList = false
+                }
+                if (isInList) {
+                    Toast.makeText(
+                        this,
+                        "This item is already in your list!",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                } else {
+
+                    val newFood = et_add2.text.toString()
+                    myList.add(newFood)
+                    setDefaults(PREF_KEY, myList.joinToString(","), this)
+                    myListAdapter.notifyDataSetChanged()
+                    Toast.makeText(
+                        this,
+                        "$newFood was added to your list!",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                    et_add2.text.clear()
+
+                }
+            } else Toast.makeText(this, "Please write something first", Toast.LENGTH_SHORT)
+                .show()
         }
+    }
 
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    val intentMainActivity =
-                        Intent(applicationContext, MainActivity::class.java).apply {
-                        }
-                    startActivity(intentMainActivity)
-                }
-                R.id.nav_exit -> {
-                    finishAffinity()
-                }
+
+    override fun onCreateOptionsMenu(list_menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.list_menu, list_menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_home -> {
+                val intentMainActivity =
+                    Intent(applicationContext, MainActivity::class.java).apply {
+                    }
+                startActivity(intentMainActivity)
             }
-            return (false)
+            R.id.nav_exit -> {
+                finishAffinity()
+            }
         }
+        return (false)
+    }
 
     private fun hideKeyboard() {
         val view = this.currentFocus

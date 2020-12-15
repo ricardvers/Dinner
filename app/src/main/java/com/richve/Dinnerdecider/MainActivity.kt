@@ -18,6 +18,7 @@ import kotlin.random.Random
 
 var isInList = false
 const val PREF_KEY = "maistas"
+
 class MainActivity : AppCompatActivity() {
     var foodList = arrayListOf<String>()
     var rolledFood = ""

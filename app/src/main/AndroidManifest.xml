@@ -15,8 +15,8 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.ActionBar.Transparent"
-        android:versionCode="5"
-        android:versionName="Final">
+        android:versionCode="8"
+        android:versionName="8">
 
         <activity
             android:name=".ListActivity"

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/relativeLayout"
     android:background="@drawable/background"
     tools:context=".FragmentActivity">
 
@@ -28,9 +28,9 @@
 
         <ImageView
             android:id="@+id/btn_back"
-            android:contentDescription="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/back"
             android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
             android:visibility="invisible" />
 
@@ -88,12 +88,12 @@
 
         <ImageView
             android:id="@+id/btn_next"
-            android:contentDescription="@string/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="0dp"
+            android:contentDescription="@string/next"
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
     </RelativeLayout>
 

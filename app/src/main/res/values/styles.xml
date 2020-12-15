@@ -19,15 +19,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="AppTheme.ActionBar.Transparent.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="MainFont">
         <item name="android:textColor">@color/textColor</item>
         <item name="android:fontFamily">@font/roboto</item>
@@ -39,9 +30,5 @@
 
         <item name="android:textStyle">bold</item>
     </style>
-
-    <style name="AppTheme.ActionBar.Transparent.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.ActionBar.Transparent.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

@@ -11,10 +11,12 @@ import kotlinx.android.synthetic.main.fragment_slider.*
 
 class SliderFragment : Fragment() {
 
-    var pageTitle : String = ""
+    var pageTitle: String = ""
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_slider, container, false)
     }
 
@@ -22,7 +24,7 @@ class SliderFragment : Fragment() {
         fragment_title.text = pageTitle
     }
 
-    fun setTitle(title : String){
+    fun setTitle(title: String) {
         pageTitle = title
     }
 

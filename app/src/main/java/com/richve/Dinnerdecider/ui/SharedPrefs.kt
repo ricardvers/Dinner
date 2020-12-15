@@ -19,17 +19,17 @@ fun setDefaults(key: String?, value: String?, context: Context?) {
     val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
     val editor = preferences.edit()
 
-    if (value.isNullOrEmpty()){
+    if (value.isNullOrEmpty()) {
         editor.remove(key)
     } else
         editor.putString(key, value)
     editor.apply()
 }
 
-    fun getDefaults(key: String?, context: Context?): String? {
-        val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        return preferences.getString(key, defaultList)
-    }
+fun getDefaults(key: String?, context: Context?): String? {
+    val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    return preferences.getString(key, defaultList)
+}
 
 
 
